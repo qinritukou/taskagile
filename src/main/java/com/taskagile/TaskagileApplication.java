@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TaskagileApplication {
+public class TaskAgileApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TaskagileApplication.class, args);
+	    SpringApplication.run(TaskAgileApplication.class, args);
 	}
 
 }
