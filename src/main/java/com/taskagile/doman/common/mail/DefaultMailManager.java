@@ -26,12 +26,6 @@ public class DefaultMailManager implements MailManager {
     @Autowired
     private Configuration configuration;
 
-    public DefaultMailManager(String mailFrom, Mailer mailer, Configuration configuration) {
-        this.mailFrom = mailFrom;
-        this.mailer = mailer;
-        this.configuration = configuration;
-    }
-
     @Override
     public void send(String emailAddress, String subject, String template, MessageVariable... variables) {
         Assert.hasText(emailAddress, "Parameter `emailAddress` must not be blank");
