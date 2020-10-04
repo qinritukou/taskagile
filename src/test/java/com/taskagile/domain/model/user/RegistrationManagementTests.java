@@ -1,6 +1,5 @@
 package com.taskagile.domain.model.user;
 
-import com.sun.deploy.association.RegisterFailedException;
 import com.taskagile.doman.common.security.PasswordEncryptor;
 import com.taskagile.doman.model.user.*;
 import org.junit.Test;
@@ -58,7 +57,7 @@ public class RegistrationManagementTests {
     }
 
     @Test
-    public void register_newUser_shouldSucceed() throws RegisterFailedException, RegistrationException {
+    public void register_newUser_shouldSucceed() throws RegistrationException {
         String username = "sunny";
         String emailAddress = "sunny@taskagile.com";
         String password = "MyPassword!";
