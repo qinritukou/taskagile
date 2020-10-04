@@ -4,8 +4,6 @@ import com.taskagile.doman.common.event.DomainEvent;
 import com.taskagile.doman.model.user.User;
 import org.springframework.util.Assert;
 
-import java.util.Objects;
-
 public class UserRegisteredEvent extends DomainEvent {
 
     private static final long serialVersionUID = 2580061707540917880L;
