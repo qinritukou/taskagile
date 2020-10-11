@@ -1,16 +1,17 @@
 <template>
   <div>
     <PageHeader />
-    <div class="borads-container">
+    <div class="boards-container">
       <div class="boards-section">
         <h2 class="section-title">{{ $t('homePage.personalBoards') }}</h2>
-        <div class="boards d-flex align-center-start flex-wrap">
-          <div class="board list-inline-item" v-for="board in personalBoards" v-bind:key="board.id" @click="openBoard(board)">
+        <div class="boards d-flex align-content-start flex-wrap">
+          <div class="board list-inline-item" v-for="board in personalBoards"
+               v-bind:key="board.id" @click="openBoard(board)">
             <h3>{{ board.name }}</h3>
             <p>{{ board.description }}</p>
           </div>
           <div class="board add list-inline-item" @click="createBoard()">
-            <font-awesome-icon icon="plus"/>
+            <font-awesome-icon icon="plus" />
             <div>{{ $t('homePage.createNewBoard') }}</div>
           </div>
         </div>
@@ -18,7 +19,8 @@
       <div class="boards-section" v-for="team in teamBoards" v-bind:key="team.id">
         <h2 class="section-title">{{ team.name }}</h2>
         <div class="boards d-flex align-content-start flex-wrap">
-          <div class="board list-inline-item" v-for="board in team.boards" v-bind:key="board.id" @click="openBoard(board)">
+          <div class="board list-inline-item" v-for="board in team.boards"
+               v-bind:key="board.id" @click="openBoard(board)">
             <h3>{{ board.name }}</h3>
             <p>{{ board.description }}</p>
           </div>
@@ -33,10 +35,10 @@
         <button class="btn btn-link" @click="createTeam()">+ {{ $t('homePage.createNewTeam') }}</button>
       </div>
     </div>
-    <CreateBoardModal 
+    <CreateBoardModal
       :teamId="selectedTeamId"
-      @created="onBoardCreated">
-    </CreateBoardModal>
+      @created="onBoardCreated" />
+    <CreateTeamModal />
   </div>
 </template>
 
@@ -49,7 +51,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomePage',
-  data() {
+  data () {
     return {
       selectedTeamId: 0
     }
@@ -66,18 +68,18 @@ export default {
     CreateTeamModal
   },
   methods: {
-    openBoard(board) {
-      this.$router.push({ name: 'board', params: { boardId: board.id } })
+    openBoard (board) {
+      this.$router.push({name: 'board', params: {boardId: board.id}})
     },
-    createBoard(team) {
+    createBoard (team) {
       this.selectedTeamId = team ? team.id : 0
       $('#createBoardModal').modal('show')
     },
-    createTeam() {
+    createTeam () {
       $('#createTeamModal').modal('show')
     },
-    onBoardCreated(boardId) {
-      this.$router.push({ name: 'board', params: { boardId: boardId } })
+    onBoardCreated (boardId) {
+      this.$router.push({name: 'board', params: {boardId: boardId}})
     }
   }
 }

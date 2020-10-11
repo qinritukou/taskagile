@@ -1,12 +1,12 @@
 <template>
   <div class="page-header d-flex align-content-center">
     <div class="logo" @click="goHome()">
-      <font-awesome-icon icon="name" class="home-icon"/>
-      <img src="/images/logo.png">
+      <font-awesome-icon icon="home" class="home-icon" />
+      <img src="/static/images/logo.png">
     </div>
     <div class="boards-menu-toggle">
       <div class="dropdown">
-        <button class="btn dropdown-toggle" type="button" id="boardMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn dropdown-toggle" type="button" id="boardsMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ $t('header.boardsMenu.label') }}
         </button>
         <div class="dropdown-menu" aria-labelledby="boardsMenu">
@@ -14,31 +14,30 @@
           <div v-show="hasBoards">
             <h6 class="dropdown-header" v-show="personalBoards.length">{{ $t('header.boardsMenu.personalBoards') }}</h6>
             <button v-for="board in personalBoards" v-bind:key="board.id" @click="openBoard(board)"
-                class="dropdown-item" type="button">{{ board.name }}</button>
+                    class="dropdown-item" type="button">{{ board.name }}</button>
             <div v-for="team in teamBoards" v-bind:key="'t' + team.id">
               <h6 class="dropdown-header">{{ team.name }}</h6>
-              <button v-for="board in teams.boards" v-bind:key="board.id" @click="openBoard(board)"
-                class="dropdown-item" type="button">{{ board.name }}</button>
+              <button v-for="board in team.boards" v-bind:key="board.id" @click="openBoard(board)"
+                      class="dropdown-item" type="button">{{ board.name }}</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="search-box flex-fill">
       <div class="search-wrapper">
-        <font-awesome-icon icon="search" class="search-icon"/>
+        <font-awesome-icon icon="search" class="search-icon" />
         <input type="text" v-bind:placeholder="$t('header.search')" class="form-control form-control-sm" />
       </div>
-      <div class="profile-menu-toggle">
-        <div class="dropdown">
-          <button class="btn dropdown-toggle" type="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ user.name }}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="profileMenu">
-            <button class="dropdown-item" type="button">{{ $t('header.profile') }}</button>
-            <button class="dropdown-item" type="button">{{ $t('header.signOut') }}</button>
-          </div>
+    </div>
+    <div class="profile-menu-toggle">
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user.name }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="profileMenu">
+          <button class="dropdown-item" type="button">{{ $t('header.profile') }}</button>
+          <button class="dropdown-item" type="button">{{ $t('header.signOut') }}</button>
         </div>
       </div>
     </div>
@@ -59,15 +58,15 @@ export default {
       'teamBoards'
     ])
   },
-  created(){
+  created () {
     this.$store.dispatch('getMyData')
   },
   methods: {
-    goHome() {
-      this.$router.push({ name: 'home' })
+    goHome () {
+      this.$router.push({name: 'home'})
     },
-    openBoard(board) {
-      this.$router.push({ name: 'board', params: { boardId: board.id } })
+    openBoard (board) {
+      this.$router.push({name: 'board', params: { boardId: board.id }})
     }
   }
 }
@@ -87,17 +86,23 @@ export default {
 
     .home-icon {
       font-size: 20px;
-      vertical-align: middle;      
+      vertical-align: middle;
     }
 
     img {
       margin-left: 5px;
       margin-top: 6px;
       width: 80px;
+      // vertical-align: bottom;
     }
   }
 
   .boards-menu-toggle {
+    padding-left: 20px;
+    width: 100px;
+  }
+
+  .profile-menu-toggle {
     width: 215px;
     text-align: right;
   }
