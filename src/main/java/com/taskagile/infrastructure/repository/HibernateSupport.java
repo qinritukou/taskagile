@@ -4,14 +4,16 @@ import org.hibernate.Session;
 
 import javax.persistence.EntityManager;
 
-public abstract class HibernateSupport {
-    EntityManager entityManager;
+abstract class HibernateSupport {
 
-    HibernateSupport(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+  EntityManager entityManager;
 
-    Session getSession() {
-        return entityManager.unwrap(Session.class);
-    }
+  HibernateSupport(EntityManager entityManager) {
+    this.entityManager = entityManager;
+  }
+
+  Session getSession() {
+    return entityManager.unwrap(Session.class);
+  }
+
 }

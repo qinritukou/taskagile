@@ -1,8 +1,8 @@
-modules.exports = {
-    env: {
-        jest: true
-    },
-    rules: {
-        'import/no_extraneous-dependencies': 'off'
-    }
+module.exports = {
+  env: {
+    jest: true
+  },
+  rules: {
+    'import/no-extraneous-dependencies': 'off'
+  }
 }
