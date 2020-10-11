@@ -3,6 +3,7 @@ import RegisterPage from '@/views/RegisterPage'
 import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
 import registrationService from '@/services/registration'
+import { i18n } from '@/i18n'
 
 // Adding Vue Router to the test so that
 // we can access vm.$router
@@ -25,7 +26,8 @@ describe('RegisterPage.vue', () => {
   beforeEach(() => {
     wrapper = mount(RegisterPage, {
       localVue,
-      router
+      router,
+      i18n
     })
     fieldUsername = wrapper.find('#username')
     fieldEmailAddress = wrapper.find('#emailAddress')
